@@ -7,10 +7,15 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #faf8f4; color: #1a1a1a; min-height: 100vh; }
-    header { padding: 2rem; border-bottom: 1px solid #e8e2d9; display: flex; justify-content: space-between; align-items: center; background: #faf8f4; }
+    header { padding: 1.5rem 2rem; border-bottom: 1px solid #e8e2d9; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
     header h1 { font-size: 1.2rem; font-weight: 500; color: #1a1a1a; }
-    header span { font-size: 0.8rem; color: #999; }
-    .layout { display: flex; gap: 2rem; max-width: 1400px; margin: 0 auto; padding: 2rem; align-items: flex-start; }
+    header .right { display: flex; gap: 1rem; align-items: center; }
+    header .data { font-size: 0.8rem; color: #999; }
+    .nav { display: flex; gap: 0.5rem; }
+    .nav-btn { cursor: pointer; font-size: 0.8rem; padding: 5px 14px; border-radius: 20px; background: transparent; color: #999; border: 0.5px solid #e8e2d9; transition: all 0.2s; }
+    .nav-btn.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+    .section { padding: 2rem; max-width: 1400px; margin: 0 auto; }
+    .layout { display: flex; gap: 2rem; align-items: flex-start; }
     .col-etf { flex: 1; min-width: 0; }
     .col-science { flex: 1; min-width: 0; position: sticky; top: 2rem; }
     .section-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #999; margin-bottom: 1rem; }
@@ -24,12 +29,13 @@
     .briefing hr { border: none; border-top: 1px solid #e8e2d9; margin: 1.5rem 0; }
     .science-box { background: #f0ece4; border-radius: 12px; padding: 1.5rem; font-size: 0.9rem; line-height: 1.8; color: #444; }
     .science-box h2 { font-size: 1.2rem; color: #2d6a4f; margin: 0 0 0.75rem; }
-    .science-box h3 { font-size: 1rem; color: #40916c; margin: 1rem 0 0.5rem; }
     .science-box p { margin-bottom: 0.75rem; }
-    .science-box ul { padding-left: 1.2rem; margin-bottom: 0.75rem; }
-    .science-box li { margin-bottom: 0.4rem; }
     .science-box strong { color: #1b4332; }
-    .footer { padding: 1rem 2rem; border-top: 1px solid #e8e2d9; font-size: 0.7rem; color: #bbb; text-align: center; margin-top: 2rem; background: #faf8f4; }
+    .cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; }
+    .case-box { background: #fff; border: 0.5px solid #e8e2d9; border-radius: 12px; padding: 1.5rem; }
+    .case-title { font-size: 1rem; font-weight: 600; color: #1a1a1a; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid #f0ece4; }
+    .case-body { font-size: 0.85rem; line-height: 1.7; color: #555; }
+    .footer { padding: 1rem 2rem; border-top: 1px solid #e8e2d9; font-size: 0.7rem; color: #bbb; text-align: center; }
     @media (max-width: 768px) {
       .layout { flex-direction: column; }
       .col-science { position: static; }
@@ -39,127 +45,149 @@
 <body>
 <header>
   <h1>Federico — AI Dashboard</h1>
-  <span>mercoledì 24 giugno 2026</span>
+  <div class="right">
+    <span class="data">giovedì 25 giugno 2026</span>
+    <div class="nav">
+      <div class="nav-btn active" onclick="showSection('briefing', this)">Briefing</div>
+      <div class="nav-btn" onclick="showSection('criminal', this)">Criminal</div>
+    </div>
+  </div>
 </header>
-<div class="layout">
-  <div class="col-etf">
-    <div class="section-label">📊 ETF Briefing del giorno</div>
-    <div class="briefing"><h2>🇰🇷 Korea e Semiconduttori: Il Duopolio Tecnologico che Sfida i Mercati Globali</h2>
 
-<p>Questa mattina i dati di JustETF raccontano una storia precisa: la Corea del Sud e il settore globale dei semiconduttori dominano la classifica dei migliori ETF per performance, con rendimenti che superano il 100% su base annua. Un segnale difficile da ignorare, ma che merita un'analisi lucida prima di qualsiasi valutazione.</p>
+<div id="section-briefing" class="section">
+  <div class="layout">
+    <div class="col-etf">
+      <div class="section-label">📊 ETF Briefing del giorno</div>
+      <div class="briefing"><h2>🔄 Convertibili in volo e chip coreani alle stelle: il mercato obbligazionario e azionario a confronto</h2>
+
+<p>Oggi il focus è su due mondi apparentemente distanti ma entrambi protagonisti delle classifiche di rendimento: le <strong>obbligazioni convertibili globali</strong> e il settore dei <strong>semiconduttori con focus sulla Corea del Sud</strong>. I dati di oggi raccontano una storia di divergenza estrema, con rendimenti che vanno dal -3% al +115% nell'ultimo anno.</p>
 
 <hr>
 
-<h2>📊 Analisi dei Dati: I Migliori Performer</h2>
+<h2>📊 Analisi dei Dati: I Migliori e i Peggiori</h2>
 
-<h3>🥇 ETF Corea del Sud – FTSE Korea 30/18 Capped: +111,59%</h3>
+<h3>🏆 Top Performer: Obbligazioni Convertibili Globali</h3>
 
-<p>Il leader assoluto della classifica replica l'indice <strong>FTSE Korea 30/18 Capped</strong>, che include le principali società quotate alla Borsa di Seoul con un meccanismo di cap (tetto massimo) del 30% per il singolo titolo e 18% per gli altri, pensato per limitare l'eccessiva concentrazione su colossi come <strong>Samsung Electronics</strong> e <strong>SK Hynix</strong>. Questi due nomi da soli rappresentano storicamente oltre il 40-50% della capitalizzazione coreana.</p>
+<p>Il segmento delle obbligazioni convertibili globali guida la classifica obbligazionaria con rendimenti notevolmente superiori alla media:</p>
 
-<p>Il mercato azionario sudcoreano sale tipicamente quando:</p>
 <ul>
-  <li>La domanda globale di chip DRAM e NAND flash accelera (es. boom AI e data center)</li>
-  <li>Il won coreano si indebolisce rispetto al dollaro, rendendo le esportazioni più competitive</li>
-  <li>I grandi buyer tecnologici (Apple, Nvidia, Microsoft) aumentano gli ordini</li>
+  <li><strong>FTSE Qualified Global Convertible (non hedged):</strong> +20,35% nell'ultimo anno, +3,53% nell'ultimo mese, +12,95% da inizio anno.</li>
+  <li><strong>FTSE Qualified Global Convertible EUR Hedged:</strong> +16,36% nell'ultimo anno, con un costo della copertura valutaria che ha eroso circa 4 punti percentuali di rendimento rispetto alla versione non coperta.</li>
 </ul>
 
-<p><strong>Rischi specifici da tenere a mente:</strong></p>
+<p><strong>Cosa replica questo ETF e come funzionano le convertibili?</strong> Le obbligazioni convertibili sono strumenti ibridi: sono obbligazioni societarie che possono essere convertite in azioni della società emittente a determinate condizioni. Questo significa che offrono una cedola (solitamente più bassa delle obbligazioni tradizionali) ma partecipano parzialmente al rialzo azionario se l'azione sottostante sale. In gergo si parla di "convexity positiva": si guadagna se le azioni salgono, si perde meno se scendono, grazie al "pavimento obbligazionario".</p>
+
+<p><strong>Perché stanno salendo?</strong> Il rally delle convertibili negli ultimi 12 mesi è strettamente correlato all'euforia sui mercati azionari — specialmente nel comparto tecnologico e AI — che ha aumentato il valore dell'opzione di conversione incorporata. Storicamente, le convertibili performano molto bene nelle fasi di mercato azionario rialzista con tassi stabili o in discesa.</p>
+
+<p><strong>Rischi specifici da considerare:</strong></p>
 <ul>
-  <li><strong>Rischio geopolitico elevato:</strong> la prossimità con la Corea del Nord genera periodiche fiammate di volatilità</li>
-  <li><strong>Concentrazione settoriale:</strong> la Corea è essenzialmente un proxy sui semiconduttori e sull'elettronica di consumo</li>
-  <li><strong>Valuta:</strong> l'esposizione al won (KRW) introduce un rischio cambio non trascurabile per l'investitore europeo</li>
-  <li><strong>Ciclo dei chip:</strong> il settore è notoriamente ciclico — quello che sale del 100% può correggere del 50% nel giro di 18 mesi</li>
+  <li>Elevata concentrazione nel settore tecnologico USA (spesso oltre il 40% degli indici convertibili globali).</li>
+  <li>Bassa liquidità rispetto alle obbligazioni governative: in caso di stress di mercato, gli spread possono allargarsi rapidamente.</li>
+  <li>Rischio di credito: le emittenti sono spesso società growth con rating medio-basso (BB/B).</li>
+  <li>Per la versione hedged: il costo della copertura EUR/USD può variare significativamente nel tempo.</li>
 </ul>
 
-<p>ETF simili da confrontare per costi: il <strong>Xtrackers MSCI Korea Swap</strong> (TER ~0,65%) e gli ETF iShares MSCI Korea offrono esposizioni analoghe con strutture di costo talvolta inferiori rispetto a prodotti più di nicchia. Vale sempre la pena confrontare il TER su JustETF prima di scegliere.</p>
+<p><strong>ETF disponibili e confronto costi:</strong> Tra gli strumenti più accessibili in Europa troviamo il <strong>SPDR Refinitiv Global Convertible Bond UCITS ETF</strong> (TER ~0,50%) e il <strong>Invesco Global Convertible Bond UCITS ETF</strong>. Il TER medio del settore si aggira intorno allo 0,45-0,55%, significativamente più alto delle obbligazioni governative ma giustificato dalla complessità dello strumento.</p>
 
 <hr>
 
-<h3>🥈 ETF Corea del Sud – MSCI Korea 20/35: +108,62% e variante Custom: +104,63%</h3>
+<h3>📉 Fanalini di coda: Obbligazioni Giapponesi</h3>
 
-<p>Questi ETF replicano l'indice <strong>MSCI Korea</strong> nelle sue varianti con limiti di concentrazione (20% per il singolo titolo, 35% per i cluster). La differenza rispetto al FTSE Korea è sottile ma rilevante: l'universo MSCI tende ad essere leggermente più ampio e include anche mid-cap coreane, offrendo una diversificazione marginalmente maggiore. La variante <em>Custom</em> applica filtri aggiuntivi (spesso ESG o esclusioni settoriali) che possono ridurre leggermente la performance in mercati rialzisti ma limitare i drawdown in quelli ribassisti.</p>
+<p>Sul fronte opposto, i titoli di stato giapponesi in JPY registrano le peggiori performance obbligazionarie:</p>
 
-<hr>
-
-<h3>🥉 ETF Semiconduttori Globali – Nasdaq Global Semiconductor: +105,29%</h3>
-
-<p>Questo ETF replica l'indice <strong>Nasdaq Global Semiconductor</strong>, che include i principali produttori e designer di chip a livello mondiale: <strong>Nvidia, TSMC, ASML, Broadcom, Qualcomm</strong> e naturalmente Samsung e SK Hynix. È uno strumento più diversificato geograficamente rispetto ai puri ETF coreani, includendo USA, Taiwan, Paesi Bassi e Giappone.</p>
-
-<p>Il settore sale storicamente per:</p>
 <ul>
-  <li>Cicli di aggiornamento infrastrutturale (5G, AI, automotive elettrico, IoT)</li>
-  <li>Scarsità di offerta che gonfia i prezzi medi di vendita (ASP)</li>
-  <li>Politiche di reshoring che generano sussidi pubblici massicci (CHIPS Act USA, sussidi europei)</li>
+  <li><strong>FTSE Japanese Government Bond (JPY):</strong> -3,41% nell'ultimo anno, con perdite confermate anche nelle versioni EUR hedged (-2,85%).</li>
 </ul>
 
-<p><strong>Rischi specifici:</strong></p>
+<p>Il motivo è strutturale: la <strong>Bank of Japan ha progressivamente abbandonato la sua politica di "yield curve control"</strong>, lasciando salire i rendimenti dei JGB (Japanese Government Bonds). Quando i rendimenti salgono, i prezzi delle obbligazioni scendono. Per un investitore europeo non hedgiato, il rischio è duplice: perdite sul prezzo dei bond e possibile deprezzamento dello JPY. La versione hedged limita il secondo rischio ma non il primo.</p>
+
+<hr>
+
+<h3>🚀 Azioni: La Corea del Sud e i Semiconduttori dominano</h3>
+
+<p>I numeri sono sorprendenti e meritano una riflessione approfondita:</p>
+
 <ul>
-  <li><strong>Valutazioni elevate:</strong> dopo performance così sostenute, i multipli P/E del settore sono storicamente compressi rispetto al passato ma comunque elevati</li>
-  <li><strong>Rischio export control:</strong> le restrizioni USA all'export di chip verso Cina impattano direttamente i ricavi di molte aziende in portafoglio</li>
-  <li><strong>Concentrazione su Nvidia:</strong> in molti indici semi, Nvidia pesa oltre il 20-25% — un singolo titolo che muove tutto</li>
+  <li><strong>FTSE Korea 30/18 Capped:</strong> +115,06% nell'ultimo anno, +10,63% mensile, +59,84% da inizio anno.</li>
+  <li><strong>MSCI Korea 20/35:</strong> +112,48% nell'ultimo anno.</li>
+  <li><strong>Nasdaq Global Semiconductor:</strong> +104,88% nell'ultimo anno, +14,65% mensile.</li>
+  <li><strong>Mirae Asset AI Semiconductor & Quantum:</strong> +101,65% nell'ultimo anno.</li>
+  <li><strong>MSCI World Semiconductors and Semiconductor Equipment:</strong> +89,10% nell'ultimo anno, con un +18,22% solo nell'ultimo mese — il dato mensile più alto in assoluto tra tutti gli strumenti analizzati oggi.</li>
 </ul>
 
-<p>Alternativa da valutare: il <strong>iShares MSCI World Semiconductors and Semiconductor Equipment ETF</strong> (presente anche in classifica con +86,16%) offre un'esposizione simile con filtraggio MSCI World, tendenzialmente più liquido e con TER competitivi intorno allo 0,35%.</p>
+<p><strong>Cosa replicano questi ETF e perché la Corea del Sud?</strong> La Corea del Sud è di fatto un proxy globale sui semiconduttori: <strong>Samsung Electronics</strong> e <strong>SK Hynix</strong> rappresentano spesso oltre il 50-60% degli indici Korea. SK Hynix in particolare è il principale produttore mondiale di chip HBM (High Bandwidth Memory), la tipologia di memoria ad alta velocità indispensabile per i chip AI come i processori NVIDIA H100/H200. Il boom dell'intelligenza artificiale generativa ha creato una domanda senza precedenti per questo tipo di componenti.</p>
 
-<hr>
+<p><strong>Il ciclo storico dei semiconduttori:</strong> È uno dei settori più ciclici in assoluto. Storicamente attraversa fasi di boom (quando la domanda supera l'offerta) e bust (quando le scorte si accumulano e i prezzi crollano). Il ciclo dura mediamente 3-5 anni. Siamo attualmente in una fase di forte upswing guidata dall'AI, ma è importante ricordare che cicli simili si sono visti in passato (es. fine anni '90, 2000-2002 poi crollo) con correzioni anche del 70-80%.</p>
 
-<h3>🤖 ETF AI Semiconductor & Quantum – Mirae Asset: +102,73%</h3>
-
-<p>Un ETF più tematico e di nicchia che unisce semiconduttori per intelligenza artificiale e <strong>tecnologie quantistiche</strong>. La componente quantistica è ancora minuscola in termini di capitalizzazione reale, quindi questo ETF è di fatto un semi-fund con un'etichetta futuristica. Attenzione al TER tipicamente più elevato per i prodotti tematici (spesso sopra lo 0,50-0,75%) e alla liquidità più bassa. È uno strumento per chi vuole un'esposizione speculativa al tema AI+quantum, non un'ancora di portafoglio.</p>
-
-<hr>
-
-<h2>📉 Il Lato Oscuro: Criptovalute in Caduta Libera</h2>
-
-<p>In netto contrasto, la classifica dei peggiori performance è dominata da ETF/ETP su criptovalute alternative:</p>
+<p><strong>Rischi specifici da non sottovalutare:</strong></p>
 <ul>
-  <li><strong>Bitcoin Cash: -67,81%</strong></li>
-  <li><strong>Cardano: -56,41%</strong></li>
-  <li><strong>Tezos: -54,66%</strong></li>
-  <li><strong>Polkadot: -50,00%</strong></li>
+  <li><strong>Concentrazione geopolitica:</strong> La penisola coreana rimane una zona di tensione con la Corea del Nord. Un eventuale escalation avrebbe impatto immediato sui mercati.</li>
+  <li><strong>Dipendenza da TSMC e catena di fornitura taiwanese:</strong> Molti chip disegnati in USA e assemblati a Taiwan. Le tensioni nello Stretto di Taiwan rappresentano un rischio sistemico.</li>
+  <li><strong>Valuta:</strong> Il KRW (Won coreano) ha una forte correlazione con il sentiment risk-on/risk-off globale e può deprezzarsi rapidamente in fasi di stress.</li>
+  <li><strong>Valutazioni elevate:</strong> Dopo rialzi del 100%+, il rapporto rischio/rendimento prospettico è molto diverso da 12 mesi fa.</li>
+  <li><strong>Rischio regolatorio:</strong> USA e Cina stanno entrambi cercando di sviluppare semiconduttori domestici, riducendo potenzialmente la domanda per i produttori coreani nel lungo termine.</li>
 </ul>
 
-<p>Questi strumenti riflettono il crollo delle <strong>altcoin</strong> in un contesto in cui il capitale cripto si è concentrato sempre più su Bitcoin ed Ethereum, lasciando le criptovalute di seconda e terza fascia in un lungo bear market strutturale. È la dimostrazione pratica del <em>winner-takes-most</em> che caratterizza i mercati tecnologici emergenti.</p>
+<p><strong>ETF simili e confronto TER:</strong> Per esposizione ai semiconduttori globali, tra le opzioni più efficienti in Europa troviamo il <strong>iShares MSCI World Semiconductors UCITS ETF</strong> (TER ~0,35%) e il <strong>VanEck Semiconductor UCITS ETF</strong> che replica il MVIS US Listed Semiconductor (TER ~0,35%). Per la Corea specificatamente, il <strong>Xtrackers MSCI Korea UCITS ETF</strong> ha un TER di circa 0,65%. Attenzione: ETF tematici come il Mirae Asset AI Semiconductor tendono ad avere TER più elevati (0,75-0,95%) a fronte di portafogli più concentrati.</p>
 
 <hr>
 
-<h2>💡 Due Spunti per l'Investitore a Lungo Termine</h2>
+<h2>💡 Due Spunti di Riflessione per l'Investitore a Lungo Termine</h2>
 
-<h3>1. Performance passata eccezionale = aspettative future più basse, non più alte</h3>
-<p>Quando un ETF segna +111% in un anno, il mercato ha già incorporato molta della buona notizia nei prezzi. L'investitore di lungo periodo dovrebbe chiedersi: <em>quale scenario deve ancora verificarsi perché questo rendimento si ripeta?</em> Non si tratta di non investire, ma di calibrare le aspettative e il peso in portafoglio. Un'esposizione del 5-10% a temi ciclici ad alta volatilità è molto diversa dal puntare il 40% del capitale su di essi.</p>
+<h3>1. Il pericolo dell'inseguimento dei rendimenti passati</h3>
+<p>+115% in un anno è un numero che cattura l'attenzione e accende l'entusiasmo. Ma è esattamente il momento in cui l'investitore razionale dovrebbe fermarsi a riflettere: chi ha guadagnato quel 115% era già posizionato 12 mesi fa. Chi entra oggi parte da una base di valutazione completamente diversa. I semiconduttori e la Corea del Sud possono continuare a crescere — e forse lo faranno — ma il rapporto rischio/rendimento atteso non è più quello di un anno fa. La disciplina del ribilanciamento periodico esiste proprio per questo: ridurre automaticamente le posizioni che si sono molto apprezzate, senza dover "prevedere" quando il mercato girerà.</p>
 
-<h3>2. La Corea del Sud come "specchio" dell'economia globale</h3>
-<p>Le esportazioni coreane di chip e display sono considerate da molti analisti un <strong>leading indicator</strong> dell'economia tecnologica mondiale. Quando Samsung e SK Hynix alzano i prezzi dei chip, significa che la domanda di data center, smartphone e auto elettriche sta accelerando a livello sistemico. Tenere d'occhio i report trimestrali di queste aziende può fornire segnali utili sull'andamento di settori ben più ampi del solo mercato coreano.</p>
+<h3>2. Le obbligazioni convertibili come "terza via" nel portafoglio</h3>
+<p>I dati di oggi mostrano che le convertibili globali hanno reso +20% in 12 mesi: molto più di qualsiasi obbligazione tradizionale, ma con una volatilità inferiore al puro azionario. Per un investitore italiano abituato a pensare il portafoglio in termini di "azioni vs BTP", le convertibili rappresentano una categoria spesso ignorata che merita attenzione. Non come sostituto delle obbligazioni core del portafoglio, ma come componente satellite per chi vuole partecipare parzialmente alla crescita azionaria mantenendo un "pavimento" obbligazionario. Il compromesso, come sempre, è la complessità e costi leggermente superiori.</p>
 
 <hr>
 
-<h2>✍️ Chiusura</h2>
+<h2>📌 In Chiusura</h2>
 
-<p>Il 24 giugno 2026 i mercati ci mostrano un mondo a due velocità: la corsa dei chip e dell'intelligenza artificiale da un lato, il lento declino delle criptovalute alternative dall'altro. Come sempre, i dati di performance sono un punto di partenza per la riflessione, non un invito all'azione immediata. Buona giornata e buone analisi.</p>
+<p>La giornata di oggi mette in luce una divergenza netta: il mondo obbligazionario tradizionale fatica (specialmente in Giappone), mentre gli strumenti ibridi come le convertibili e il comparto dei chip mostrano forza straordinaria. Come sempre, i numeri più brillanti meritano la maggiore cautela analitica — non perché il trend sia destinato a finire domani, ma perché un portafoglio solido si costruisce con consapevolezza, non con l'inseguimento del grafico più ripido. Buona giornata e buona analisi.</p>
 
 <hr>
 
 </div>
-  </div>
-  <div class="col-science">
-    <div class="section-label">🔬 Pillola Scientifica</div>
-    <div class="science-box">
+    </div>
+    <div class="col-science">
+      <div class="section-label">🔬 Pillola Scientifica</div>
+      <div class="science-box">
 
 <h2>🔬 Pillola Scientifica del Giorno</h2>
 
-<h3>Il Silicio che Pensa: Come i Transistor Quantistici Stanno Riscrivendo le Regole del Calcolo</h3>
+<h3>La memoria che dimentica per ricordare meglio: il paradosso dell'oblio nelle neuroscienze</h3>
 
-<p>Ogni chip che alimenta i data center di cui parliamo ogni mattina è costruito su uno dei materiali più abbondanti della crosta terrestre: il <strong>silicio</strong>. Ma ciò che rende straordinario il silicio non è la sua abbondanza — è il fatto che si comporta come un <em>semimetallo</em>, capace di condurre o isolare l'elettricità a seconda delle condizioni. Questo comportamento, detto <strong>semiconduzione</strong>, dipende dalla struttura quantistica degli elettroni negli orbitali atomici: basta aggiungere tracce di fosforo o boro (un processo chiamato <em>drogaggio</em>) per trasformare radicalmente le proprietà elettriche del materiale.</p>
+<p>Immaginate un archivio che, per funzionare meglio, cancella deliberatamente alcune cartelle. Sembra controintuitivo, eppure è esattamente quello che fa il vostro cervello ogni notte mentre dormite. Le neuroscienze moderne hanno ribaltato una convinzione radicata: <strong>dimenticare non è un fallimento della memoria, ma una sua funzione attiva e indispensabile</strong>. Il processo prende il nome di "pruning sinaptico" — potatura sinaptica — e consiste nell'indebolimento selettivo delle connessioni neuronali meno utilizzate, per rafforzare quelle più rilevanti.</p>
 
-<p>I moderni transistor — i mattoni fondamentali di ogni processore — sono oggi costruiti a <strong>2-3 nanometri</strong> di dimensione. Per dare un riferimento: un singolo capello umano misura circa 80.000 nanometri. A queste scale, la fisica classica comincia a cedere il passo alla <strong>meccanica quantistica</strong>: gli elettroni non si muovono più come palline da biliardo lungo circuiti predefiniti, ma "teletrasportano" attraverso barriere fisiche grazie al fenomeno del <em>tunneling quantistico</em>. Questo è uno dei motivi principali per cui la miniaturizzazione tradizionale sta avvicinandosi a un limite fisico fondamentale, non tecnologico.</p>
+<p>Durante la fase di sonno REM, l'ippocampo — la struttura cerebrale fondamentale per la formazione dei ricordi — "riproduce" in accelerazione gli eventi della giornata, consolidando le informazioni importanti nella corteccia cerebrale per la memoria a lungo termine. Contemporaneamente, un sistema glinfatico (scoperto solo nel 2013 dal team della neuroscienziata Maiken Nedergaard) lava letteralmente il cervello con liquido cerebrospinale, eliminando i sottoprodotti metabolici accumulati durante la veglia — tra cui la proteina beta-amiloide, associata all'Alzheimer. Dormire male non è solo una questione di stanchezza: è una questione di igiene neuronale.</p>
 
-<p>La risposta dell'industria è duplice: da un lato si punta a transistor <strong>3D</strong> (come le architetture Gate-All-Around di Intel e Samsung) che impilano i canali conduttivi in verticale invece di miniaturizzare in orizzontale. Dall'altro, si esplora il <strong>calcolo quantistico vero e proprio</strong>, dove i <em>qubit</em> — al contrario dei bit classici che sono 0 o 1 — esistono in sovrapposizione di stati, permettendo teoricamente di risolvere certi problemi in modo esponenzialmente più rapido. Aziende come IBM, Google e startup come IonQ stanno gareggiando per raggiungere la cosiddetta <em>quantum advantage</em>: il momento in cui un computer quantistico supererà stabilmente i migliori supercomputer classici su problemi reali.</p>
+<p>Ancora più affascinante è il concetto di <strong>"oblio attivo"</strong> studiato da ricercatori come Paul Frankland e Sheena Josselyn all'Università di Toronto. I loro esperimenti sui topi hanno dimostrato che la neurogenesi nell'ippocampo — la nascita di nuovi neuroni nell'età adulta — paradossalmente contribuisce a cancellare i ricordi vecchi, "sovrascrivendoli" con nuove connessioni. I topi adulti con alta neurogenesi ricordavano meno i dettagli di esperienze passate, ma erano molto più flessibili nell'adattarsi a nuove situazioni. La memoria perfetta, come quella del leggendario Funes di Borges, potrebbe essere una maledizione piuttosto che un dono: senza oblio, ogni nuovo apprendimento verrebbe contaminato da ogni esperienza precedente.</p>
 
-<p>Il paradosso affascinante è che il silicio — elemento noto all'umanità da secoli — potrebbe essere ancora protagonista del computing quantistico: i <strong>spin qubit al silicio</strong>, dove l'informazione è codificata nello spin degli elettroni in semiconduttori tradizionali, sono considerati da molti ricercatori la via più compatibile con le attuali linee di produzione dei chip. La fabbrica del futuro potrebbe assomigliare molto a quella del presente, ma operare secondo regole che Einstein stesso definì "spettrale".</p>
+<p>Questo spiega anche perché lo stress cronico danneggia la memoria: il cortisolo in eccesso inibisce la neurogenesi ippocampale e disturba il sonno REM, colpendo contemporaneamente sia il meccanismo di consolidamento che quello di "pulizia". Le implicazioni pratiche sono notevoli: tecniche di mindfulness, esercizio fisico aerobico e — banalmente — dormire le proprie 7-8 ore non sono lussi, ma manutenzione ordinaria del sistema operativo più complesso dell'universo conosciuto.</p>
 
-<p><strong>💭 Domanda del giorno:</strong> Se i computer quantistici diventassero abbastanza potenti da rompere i sistemi di crittografia attuali, come dovrebbe cambiare l'architettura di sicurezza dell'intera economia digitale globale — dalle banche ai portafogli crypto?</p></div>
+<p><strong>💭 Domanda del giorno:</strong> Se fosse tecnologicamente possibile scegliere quali ricordi conservare e quali eliminare con precisione chirurgica, sareste disposti a cancellare un'esperienza negativa traumatica — sapendo che quell'esperienza ha probabilmente contribuito a formare chi siete oggi?</p></div>
+    </div>
   </div>
 </div>
+
+<div id="section-criminal" class="section" style="display:none;">
+  <div class="section-label">🔍 Casi Criminali</div>
+  <div class="cases-grid"><div class="case-box">
+    <div class="case-title">Caso Carretta – Omicidio della famiglia (Parma, 1989)</div>
+    <div class="case-body">Nel 1989 la famiglia Carretta scomparve durante una vacanza in camper per l'Europa; per anni l'opinione pubblica e la polizia credettero a un allontanamento volontario, alimentato dalla notizia che il padre avesse prelevato ingenti somme dall'azienda. Il caso si riaprì quando la polizia londinese fermò Ferdinando Carretta per un'infrazione stradale, e questi, dopo aver inizialmente confermato la tesi della fuga, confessò l'omicidio della propria famiglia durante un'intervista a una rete locale italiana. Ferdinando fu condannato a 5 anni in ospedale psichiatrico per incapacità di intendere e di volere al momento dei fatti, circostanza ritenuta contraddittoria dall'autore degli appunti, che sottolinea come Ferdinando fosse invece apparentemente capace di occultare i cadaveri, depistare le indagini e costruirsi una nuova vita in Inghilterra.</div>
+  </div></div>
+</div>
+
 <div class="footer">Aggiornato automaticamente · fficorilliai.github.io</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('section-' + id).style.display = 'block';
+  btn.classList.add('active');
+}
+</script>
 </body>
 </html>
